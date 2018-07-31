@@ -17,6 +17,7 @@
                 <th scope="col">Shift</th>
                 <th scope="col">Course</th>
                 <th scope="col">Number of Vacancies</th>
+                <th scope="col">Number of Vacancies Filled</th>
                 <th scope="col">#EDIT</th>
               </tr>
             </thead>
@@ -26,6 +27,7 @@
                 <td>{{ vacancy.shift }}</td>
                 <td>{{ vacancy.course }}</td>
                 <td>{{ vacancy.numVacancies }}</td>
+                <td>{{ vacancy.numVacanciesFilled }}</td>
                 <td>
                   <!-- <font-awesome-icon icon="edit" size="lg" />
                   <font-awesome-icon icon="trash-alt" size="lg" /> -->

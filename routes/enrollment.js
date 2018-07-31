@@ -43,58 +43,10 @@ sendMail = function(enrollment) {
     console.log(err)
   })
 }
- 
-checkVacancy = function(enrollment) {
-  var vacancies
-  var enrollment = enrollment
-  var validation
-  // console.log(typeof enrollment + "inscricoes" +  enrollment.course)
-
-  // vacancies = Vacancy.find({}).exec(function(err, docs){
-  //   // check(docs)
-  //   getValidation(check(docs))
-  //   // console.log("CheckReturn " +check(docs))
-  // })
-
-  function fetchTheData(){
-    return new Promise(function(resolve){
-      Vacancy.find({}).exec(function(err, docs){
-        resolve(check(docs))
-      })
-    })
-  }
-
-  async function getSomeData(value){
-    const result = await fetchTheData(value);
-    return result;
-  }
-
-  getSomeData()
-  .then(response => {
-    console.log("getSomeData "+ response)
-    validation = response
-  })
-
-  function check(vacancies){
-    for(var key in Object.keys(vacancies)){
-      if (enrollment.course == vacancies[key].course && enrollment.shift == vacancies[key].shift && enrollment.campus == vacancies[key].campus) {
-        if (vacancies[key].numVacanciesFilled == vacancies[key].numVacancies) {
-          return false
-        } else {
-          return true
-        }
-      } else {
-        return true
-      }
-    }
-  }
-  console.log("validation "+validation)
-}
 
 // Get all
 router.get('/', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers)
-  console.log("passport "+JSON.stringify(passport._userProperty))
   if (token) {
     Enrollment.find(function (err, docs) {
       if (err) return next(err)
@@ -116,7 +68,7 @@ router.get('/:id', function(req, res, next) {
 // Create
 router.post('/', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers)
-  req.body.employeer = req.user.username
+  req.body.employee = req.user.username
 
   if (token) {
     Vacancy.find({}).exec(function(err, docs){
@@ -131,17 +83,19 @@ router.post('/', passport.authenticate('jwt', { session: false}), function(req, 
             Enrollment.create(req.body, function (err, doc) {
               if (err) return next(err)
               // sendMail(doc)
+              console.log("vacancies[key]._id "+ vacancies[key]._id)
+              console.log("vacancies[key]._id "+ typeof vacancies[key].numVacanciesFilled + " " + typeof +vacancies[key].numVacanciesFilled)
+              console.log("numVacanciesFilled "+ +vacancies[key].numVacanciesFilled + 1)
+              // Vacancy.findByIdAndUpdate(vacancies[key]._id, { numVacanciesFilled: vacancies[key].numVacanciesFilled+1 }, function (err) {
+              //   if (err) return next(err)
+              // })
               res.json(doc)
             })
             return true
           }
         } else {
-          Enrollment.create(req.body, function (err, doc) {
-            if (err) return next(err)
-            // sendMail(doc)
-            res.json(doc)
-          })
-          return true
+          res.json({success: false})
+          return false
         }
       }
     })

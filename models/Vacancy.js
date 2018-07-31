@@ -5,8 +5,8 @@ var VacancySchema = new mongoose.Schema({
     shift: String,
     course: String,
     numVacancies: Number,
-    numVacanciesFilled: Number
-}, { collection: 'vacancies',
+    numVacanciesFilled: {type: Number, default: 0}
+}, { collection: 'vacancy',
     versionKey: false
 });
 

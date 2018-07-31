@@ -24,6 +24,7 @@
                 <th scope="col">Campus</th>
                 <th scope="col">Shift</th>
                 <th scope="col">Course</th>
+                <th scope="col">Employee</th>
                 <th scope="col">#EDIT</th>
               </tr>
             </thead>
@@ -36,6 +37,7 @@
                 <td>{{ enrollment.campus }}</td>
                 <td>{{ enrollment.shift }}</td>
                 <td>{{ enrollment.course }}</td>
+                <td>{{ enrollment.employee }}</td>
                 <td>
                   <!-- <font-awesome-icon icon="edit" size="lg" />
                   <font-awesome-icon icon="trash-alt" size="lg" /> -->

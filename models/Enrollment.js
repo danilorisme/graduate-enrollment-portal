@@ -10,7 +10,7 @@ require('../config/passport')(passport)
     studentName: String,
     studentMail: String,
     studentCPF: String,
-    employeer: String,
+    employee: String,
     enrollmentDateTime: {type: Date, default: Date.now}
     
 }, { 
