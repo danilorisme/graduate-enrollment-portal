@@ -58,11 +58,16 @@ router.get('/', passport.authenticate('jwt', { session: false}), function(req, r
 })
 
 // Get one
-router.get('/:id', function(req, res, next) {
+router.get('/:id', passport.authenticate('jwt', { session: false}), function(req, res) {
+  var token = getToken(req.headers)
+  if (token) {
   Enrollment.findById(req.params.id, function (err, doc) {
     if (err) return next(err)
     res.json(doc)
   })
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'})
+  }
 })
 
 // Create
@@ -85,10 +90,12 @@ router.post('/', passport.authenticate('jwt', { session: false}), function(req, 
               // sendMail(doc)
               console.log("vacancies[key]._id "+ vacancies[key]._id)
               console.log("vacancies[key]._id "+ typeof vacancies[key].numVacanciesFilled + " " + typeof +vacancies[key].numVacanciesFilled)
-              console.log("numVacanciesFilled "+ +vacancies[key].numVacanciesFilled + 1)
-              // Vacancy.findByIdAndUpdate(vacancies[key]._id, { numVacanciesFilled: vacancies[key].numVacanciesFilled+1 }, function (err) {
-              //   if (err) return next(err)
-              // })
+              var sumVacancies = vacancies[key].numVacanciesFilled + 1
+              console.log(sumVacancies)
+              Vacancy.findByIdAndUpdate(vacancies[key]._id, { numVacanciesFilled: sumVacancies }, function (err, doc) {
+                if (err) return next(err)
+                return(doc)
+              })
               res.json(doc)
             })
             return true
@@ -105,19 +112,29 @@ router.post('/', passport.authenticate('jwt', { session: false}), function(req, 
 })
 
 // Update
-router.put('/:id', function(req, res, next) {
-  Enrollment.findByIdAndUpdate(req.params.id, req.body, function (err, doc) {
-    if (err) return next(err)
-    res.json(doc)
-  })
+router.put('/:id', passport.authenticate('jwt', { session: false}), function(req, res) {
+  var token = getToken(req.headers)
+  if (token) {
+    Enrollment.findByIdAndUpdate(req.params.id, req.body, function (err, doc) {
+      if (err) return next(err)
+      res.json(doc)
+    })
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'})
+  }
 })
 
 // Delete
-router.delete('/:id', function(req, res, next) {
-  Enrollment.findByIdAndRemove(req.params.id, req.body, function (err, doc) {
-    if (err) return next(err)
-    res.json(doc)
-  })
+router.delete('/:id', passport.authenticate('jwt', { session: false}), function(req, res) {
+  var token = getToken(req.headers)
+  if (token) {
+    Enrollment.findByIdAndRemove(req.params.id, req.body, function (err, doc) {
+      if (err) return next(err)
+      res.json(doc)
+    })
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'})
+  }
 })
 
 module.exports = router

@@ -24,10 +24,10 @@
                 Administration
               </a>
               <div class="dropdown-menu" aria-labelledby="navMenuLinkAdministration">
-                <a class="dropdown-item" href="#">Types</a>
-                <a class="dropdown-item" href="#">Campi</a>
-                <a class="dropdown-item" href="#">Shifts</a>
-                <a class="dropdown-item" href="#">Courses</a>
+                <router-link class="dropdown-item" to="/listvacancy">Graduate Types</router-link>
+                <router-link class="dropdown-item" to="/listvacancy">Campi</router-link>
+                <router-link class="dropdown-item" to="/listvacancy">Shifts</router-link>
+                <router-link class="dropdown-item" to="/listvacancy">Courses</router-link>
                 <router-link class="dropdown-item" to="/listvacancy">Vacancies</router-link>
               </div>
             </li>
