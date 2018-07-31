@@ -33,19 +33,19 @@ export default {
         buttonAction() {
             if(this.confirmation) {
                 if(confirm('Do you really want to delete this Enrollment?')) {
-                    this.$emit('buttonClick');
+                    this.$emit('buttonClick')
                 }
-                return;
+                return
             }
-        this.$emit('buttonClick');
+        this.$emit('buttonClick')
        }
    },
    computed: {
 
        buttonStyle() {
-           if(this.classStyle == 'primary') return 'btn btn-primary';
-           if(this.classStyle == 'danger') return 'btn btn-danger';
-           if(this.classStyle == 'success') return 'btn btn-success';
+           if(this.classStyle == 'primary') return 'btn btn-primary'
+           if(this.classStyle == 'danger') return 'btn btn-danger'
+           if(this.classStyle == 'success') return 'btn btn-success'
        }
    }
 }

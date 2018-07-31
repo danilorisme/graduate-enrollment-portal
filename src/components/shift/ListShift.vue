@@ -23,7 +23,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="shift of shiftsFilter" :key="shift._id">
+              <tr v-for="shift of shifts" :key="shift._id">
                 <td>{{ shift.name }}</td>
                 <td>
                   <!-- <font-awesome-icon icon="edit" size="lg" />
@@ -58,7 +58,6 @@ export default {
     return {
       title: 'List of Shifts',
       shifts: [],
-      filter: '',
       errors: []
     }
   },
@@ -77,16 +76,6 @@ export default {
         console.log(e)
         this.errors.push(e)
       })
-    }
-  },
-  computed: {
-    shiftsFilter() {
-      if (this.filter) {
-        let exp = new RegExp(this.filter.trim(), 'i');
-        return this.shifts.filter(shift => exp.test(shift.name));
-      } else {
-        return this.shifts;
-      }
     }
   },
   created () {

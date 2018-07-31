@@ -5,8 +5,8 @@ var Enrollment = require('../models/Enrollment.js')
 var Vacancy = require('../models/Vacancy.js')
 var passport = require('passport')
 require('../config/passport')(passport)
-const SparkPost = require('sparkpost');
-const client = new SparkPost('2f07ededdaa8a46c7be29735abb01fac482619d4');
+const SparkPost = require('sparkpost')
+const client = new SparkPost('2f07ededdaa8a46c7be29735abb01fac482619d4')
 
 getToken = function (headers) {
   if (headers && headers.authorization) {
@@ -87,9 +87,7 @@ router.post('/', passport.authenticate('jwt', { session: false}), function(req, 
           } else {
             Enrollment.create(req.body, function (err, doc) {
               if (err) return next(err)
-              // sendMail(doc)
-              console.log("vacancies[key]._id "+ vacancies[key]._id)
-              console.log("vacancies[key]._id "+ typeof vacancies[key].numVacanciesFilled + " " + typeof +vacancies[key].numVacanciesFilled)
+              sendMail(doc)
               var sumVacancies = vacancies[key].numVacanciesFilled + 1
               console.log(sumVacancies)
               Vacancy.findByIdAndUpdate(vacancies[key]._id, { numVacanciesFilled: sumVacancies }, function (err, doc) {

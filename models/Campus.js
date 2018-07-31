@@ -5,6 +5,6 @@ var CampusSchema = new mongoose.Schema({
     adress: String
 }, { collection: 'campus',
     versionKey: false
-});
+})
 
  module.exports = mongoose.model('Campus', CampusSchema)

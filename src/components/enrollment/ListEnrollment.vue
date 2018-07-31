@@ -98,7 +98,7 @@ export default {
         let exp = new RegExp(this.filter.trim(), 'i')
         return this.enrollments.filter(enrollment => exp.test(enrollment.studentCPF))
       } else {
-        return this.enrollments;
+        return this.enrollments
       }
     }
   },

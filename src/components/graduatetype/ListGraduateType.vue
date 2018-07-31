@@ -79,10 +79,10 @@ export default {
   computed: {
     graduatetypesFilter() {
       if (this.filter) {
-        let exp = new RegExp(this.filter.trim(), 'i');
-        return this.graduatetypes.filter(graduatetype => exp.test(graduatetype.name));
+        let exp = new RegExp(this.filter.trim(), 'i')
+        return this.graduatetypes.filter(graduatetype => exp.test(graduatetype.name))
       } else {
-        return this.graduatetypes;
+        return this.graduatetypes
       }
     }
   },

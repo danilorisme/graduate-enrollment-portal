@@ -27,7 +27,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="vacancy of vacanciesFilter" :key="vacancy._id">
+              <tr v-for="vacancy of vacancies" :key="vacancy._id">
                 <td>{{ vacancy.campus }}</td>
                 <td>{{ vacancy.shift }}</td>
                 <td>{{ vacancy.course }}</td>
@@ -66,7 +66,6 @@ export default {
     return {
       title: 'List of Vacancies',
       vacancies: [],
-      filter: '',
       errors: []
     }
   },
@@ -85,16 +84,6 @@ export default {
         console.log(e)
         this.errors.push(e)
       })
-    }
-  },
-  computed: {
-    vacanciesFilter() {
-      if (this.filter) {
-        let exp = new RegExp(this.filter.trim(), 'i');
-        return this.vacancies.filter(vacancy => exp.test(vacancy.course));
-      } else {
-        return this.vacancies;
-      }
     }
   },
   created () {

@@ -86,7 +86,7 @@ export default {
         let exp = new RegExp(this.filter.trim(), 'i')
         return this.campi.filter(campus => exp.test(campus.studentCPF))
       } else {
-        return this.campi;
+        return this.campi
       }
     }
   },
