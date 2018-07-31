@@ -54,7 +54,7 @@
               </div>
 
               <div class="text-right">
-                <form-button label="Enroll" classStyle="success" type="submit"/>
+                <form-button label="Update" classStyle="success" type="submit" />
               </div>
 
             </form>
@@ -66,12 +66,11 @@
 
 <script>
 import axios from 'axios'
-// import Enrollment from '../domain/enrollment/Enrollment.js'
-import Button from './shared/button/Button.vue'
-import Navbar from './shared/navbar/Navbar.vue'
+import Button from '../shared/button/Button.vue'
+import Navbar from '../shared/navbar/Navbar.vue'
 
 export default {
-  name: 'Enrollment',
+  name: 'EditEnrollment',
   components: {
     'Navbar': Navbar,
     'form-button': Button
@@ -91,17 +90,12 @@ export default {
   methods: {
     onSubmit (evt) {
       evt.preventDefault()
-      axios.post('http://localhost:3000/enrollment', this.enrollment)
+      axios.put('http://localhost:3000/enrollment/'+this.id, this.enrollment)
       .then(response => {
-        if (response.data.success==false) {
-          alert("No vacancies for this course!")
-        } 
-        else {
-          alert("Enrollment successfully!")
-          this.$router.push({
-            name: 'EnrollmentList'
-          })
-        }
+        alert("Enrollment successfully updated!")
+        this.$router.push({
+          name: 'ListEnrollment'
+        })
       })
       .catch(e => {
         console.log(e)
@@ -165,7 +159,17 @@ export default {
 
     if(this.id) {
         axios.get('http://localhost:3000/enrollment/'+this.id)
-          .then(enrollment => {this.enrollment = enrollment.body})
+        .then(response => {
+            this.enrollment = response.data
+        })
+        .catch(e => {
+            this.errors.push(e)
+            if(e.response.status === 401) {
+                this.$router.push({
+                name: 'Login'
+                })
+            }
+        })
       }
 
   }

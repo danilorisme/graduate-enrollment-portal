@@ -29,7 +29,7 @@
                 <td>
                   <!-- <font-awesome-icon icon="edit" size="lg" />
                   <font-awesome-icon icon="trash-alt" size="lg" /> -->
-                  <router-link :to="{ name: 'EnrollmentUpdate', params: { id: vacancy._id }}">
+                  <router-link :to="{ name: 'EditVacancy', params: { id: vacancy._id }}">
                     <edit-button label="Update" type="button"/>
                   </router-link>
                   <edit-button label="Remove" type="button" :confirmation="true" classStyle="danger" @buttonClick="remove(vacancy)" />
@@ -50,7 +50,7 @@ import Navbar from '../shared/navbar/Navbar.vue'
 import Button from '../shared/button/Button.vue'
 
 export default {
-  name: 'EnrollmentList',
+  name: 'ListVacancy',
   components: {
     'Navbar': Navbar,
     'edit-button': Button
