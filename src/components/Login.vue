@@ -1,13 +1,8 @@
 <template>
   <div>
-    <div class="container mt-4">
+    <!-- <div class="container mt-4">
       <div class="row mt-4">
         <div class="col-lg-12">
-          <div v-if="errors && errors.length">
-            <div v-for="error of errors">
-              <alert show>{{error.message}}</alert>
-            </div>
-          </div>
           <form @submit="onSubmit">
             <div class="form-group">
               <label for="inputTextUsername">Username</label>
@@ -22,7 +17,51 @@
           </form>
         </div>
       </div>
-    </div>
+    </div> -->
+
+    <!-- <div class="container">
+      <div class="row">
+        <div class="Absolute-Center is-Responsive">
+          <div id="logo-container"></div>
+          <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <form id="loginForm" @submit="onSubmit">
+              <div class="form-group input-group">
+                <label for="inputTextUsername">Username</label>
+                <input class="form-control" type="text" id="inputTextUsername" :state="state" v-model.trim="login.username" />          
+              </div>
+              <div class="form-group input-group">
+                <label for="inputTextPassword">Password</label>
+                <input class="form-control" type="password" id="inputTextPassword" :state="state" v-model.trim="login.password" />     
+              </div>
+              <div class="form-group">
+                <button type="button" class="btn btn-def btn-block">Login</button>
+                <button type="button" class="btn btn-secondary btn-def btn-block" @click.stop="register()">Register</button>
+              </div>
+            </form>        
+          </div>  
+        </div>    
+      </div>
+    </div> -->
+
+    <div class="back">
+      <div class="div-center">
+        <div class="content">
+          <h3>Login</h3>
+          <hr />
+          <form @submit="onSubmit">
+            <div class="form-group">
+              <label for="inputTextUsername">Username</label>
+              <input class="form-control" type="text" id="inputTextUsername" :state="state" v-model.trim="login.username" />
+            </div>
+            <div class="form-group">
+              <label for="inputTextPassword">Password</label>
+              <input class="form-control" type="password" id="inputTextPassword" :state="state" v-model.trim="login.password" />
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+        </div>
+      </div>
+    
 
   </div>
 </template>
@@ -36,7 +75,6 @@ export default {
   data () {
     return {
       login: {},
-      errors: []
     }
   },
   methods: {
@@ -51,7 +89,7 @@ export default {
       })
       .catch(e => {
         console.log(e)
-        this.errors.push(e)
+        alert("Login or Password incorrect!")
       })
     },
     register () {
@@ -62,3 +100,36 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .back {
+    background: #ccc;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+  }
+
+  .div-center {
+    width: 400px;
+    height: 400px;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
+    padding: 1em 2em;
+    border-bottom: 2px solid #ccc;
+    display: table;
+  }
+
+  div.content {
+    display: table-cell;
+    vertical-align: middle;
+  }
+</style>
