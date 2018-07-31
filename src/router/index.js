@@ -7,25 +7,24 @@ import EditEnrollment from '@/components/enrollment/EditEnrollment'
 // Vancancy
 import CreateVacancy from '@/components/vacancy/CreateVacancy'
 import ListVacancy from '@/components/vacancy/ListVacancy'
-import EditVacancy from '@/components/vacancy/EditVacancy'
+// import EditVacancy from '@/components/vacancy/EditVacancy'
 // Graduate Type
-import CreateGraduateType from '@/components/graduatetype/CreateGraduateType'
-import ListGraduateType from '@/components/graduatetype/ListGraduateType'
-import EditGraduateType from '@/components/graduatetype/EditGraduateType'
+// import CreateGraduateType from '@/components/graduatetype/CreateGraduateType'
+// import ListGraduateType from '@/components/graduatetype/ListGraduateType'
+// import EditGraduateType from '@/components/graduatetype/EditGraduateType'
 // Campus
-import CreateCampus from '@/components/campus/CreateCampus'
-import ListCampus from '@/components/campus/ListCampus'
-import EditCampus from '@/components/campus/EditCampus'
+// import CreateCampus from '@/components/campus/CreateCampus'
+// import ListCampus from '@/components/campus/ListCampus'
+// import EditCampus from '@/components/campus/EditCampus'
 // Shift
-import CreateShift from '@/components/Shift/CreateShift'
-import ListShift from '@/components/Shift/ListShift'
-import EditShift from '@/components/Shift/EditShift'
+// import CreateShift from '@/components/Shift/CreateShift'
+// import ListShift from '@/components/Shift/ListShift'
+// import EditShift from '@/components/Shift/EditShift'
 // Course
-import CreateCourse from '@/components/course/CreateCourse'
-import ListCourse from '@/components/course/ListCourse'
-import EditCourse from '@/components/course/EditCourse'
-
-
+// import CreateCourse from '@/components/course/CreateCourse'
+// import ListCourse from '@/components/course/ListCourse'
+// import EditCourse from '@/components/course/EditCourse'
+// Auth
 import Login from '@/components/Login'
 import Register from '@/components/Register'
 
