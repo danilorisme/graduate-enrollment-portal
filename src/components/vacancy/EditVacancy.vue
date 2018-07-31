@@ -36,7 +36,7 @@
               </div>
 
               <div class="text-right">
-                <form-button label="Create" classStyle="success" type="submit"/>
+                <form-button label="Update" classStyle="success" type="submit"/>
               </div>
 
             </form>
@@ -52,27 +52,28 @@ import Button from '../shared/button/Button.vue'
 import Navbar from '../shared/navbar/Navbar.vue'
 
 export default {
-  name: 'CreateVacancy',
+  name: 'EditVacancy',
   components: {
     'Navbar': Navbar,
     'form-button': Button
   },
   data () {
     return {
-      title: 'Create Vacancy',
+      title: 'Edit vacancy',
       campi: [],
       shifts: [],
       courses: [],
       vacancy: {},
+      id: this.$route.params.id,
       errors: []
     }
   },
   methods: {
     onSubmit (evt) {
       evt.preventDefault()
-      axios.post('http://localhost:3000/vacancy', this.vacancy)
+      axios.put('http://localhost:3000/vacancy/'+this.id, this.vacancy)
       .then(response => {
-        alert("Vacancy successfully created!")
+        alert("vacancy successfully updated!")
         this.$router.push({
           name: 'ListVacancy'
         })
@@ -81,7 +82,7 @@ export default {
         console.log(e)
         this.errors.push(e)
       })
-    }
+    }  
   },
   created() {
     axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken')
@@ -124,10 +125,21 @@ export default {
         })
       }
     })
+
+    if(this.id) {
+        axios.get('http://localhost:3000/vacancy/'+this.id)
+        .then(response => {
+            this.vacancy = response.data
+        })
+        .catch(e => {
+            this.errors.push(e)
+            if(e.response.status === 401) {
+                this.$router.push({
+                name: 'Login'
+                })
+            }
+        })
+      }
   }
 }
 </script>
-
-<style>
-
-</style>

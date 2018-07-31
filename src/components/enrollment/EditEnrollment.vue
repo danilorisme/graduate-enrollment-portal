@@ -77,7 +77,7 @@ export default {
   },
   data () {
     return {
-      title: 'Graduate Enrollment',
+      title: 'Edit Graduate Enrollment',
       graduateTypes: [],
       campi: [],
       shifts: [],

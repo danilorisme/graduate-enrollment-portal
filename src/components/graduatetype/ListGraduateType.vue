@@ -7,39 +7,28 @@
           <h2 class="centered">{{ title }}</h2>
         </div>
         <div class="col-lg-2">
-          <router-link :to="{ name: 'CreateVacancy'}">
+          <router-link :to="{ name: 'CreateGraduateType'}">
             <edit-button label="Create" classStyle="success" type="button"/>
           </router-link>
         </div>
       </div>
-      
       <div class="row mt-4">
         <div class="table-responsive-sm col-lg-12">
           <table class="table table-sm">
             <thead>
               <tr>
-                <th scope="col">Campus</th>
-                <th scope="col">Shift</th>
-                <th scope="col">Course</th>
-                <th scope="col">Number of Vacancies</th>
-                <th scope="col">Number of Vacancies Filled</th>
-                <th scope="col">#EDIT</th>
+                <th scope="col">Name</th>
+                <th scope="col-4">#EDIT</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="vacancy of vacanciesFilter" :key="vacancy._id">
-                <td>{{ vacancy.campus }}</td>
-                <td>{{ vacancy.shift }}</td>
-                <td>{{ vacancy.course }}</td>
-                <td>{{ vacancy.numVacancies }}</td>
-                <td>{{ vacancy.numVacanciesFilled }}</td>
+              <tr v-for="graduatetype of graduatetypesFilter" :key="graduatetype._id">
+                <td>{{ graduatetype.name }}</td>
                 <td>
-                  <!-- <font-awesome-icon icon="edit" size="lg" />
-                  <font-awesome-icon icon="trash-alt" size="lg" /> -->
-                  <router-link :to="{ name: 'EditVacancy', params: { id: vacancy._id }}">
+                  <router-link :to="{ name: 'EditGraduateType', params: { id: graduatetype._id }}">
                     <edit-button label="Update" type="button"/>
                   </router-link>
-                  <edit-button label="Remove" type="button" :confirmation="true" classStyle="danger" @buttonClick="remove(vacancy)" />
+                  <edit-button label="Remove" type="button" :confirmation="true" classStyle="danger" @buttonClick="remove(graduatetype)" />
                 </td>
               </tr>
             </tbody>
@@ -57,28 +46,28 @@ import Navbar from '../shared/navbar/Navbar.vue'
 import Button from '../shared/button/Button.vue'
 
 export default {
-  name: 'ListVacancy',
+  name: 'ListGraduateType',
   components: {
     'Navbar': Navbar,
     'edit-button': Button
   },
   data () {
     return {
-      title: 'List of Vacancies',
-      vacancies: [],
+      title: 'List of Graduate Type',
+      graduatetypes: [],
       filter: '',
       errors: []
     }
   },
   methods: {
-    remove(vacancy) {
-      axios.delete('http://localhost:3000/vacancy/'+vacancy._id)
+    remove(graduatetype) {
+      axios.delete('http://localhost:3000/graduatetype/'+graduatetype._id)
       .then(response => {
-        let index = this.vacancies.indexOf(vacancy)
-        this.vacancies.splice(index, 1)
-        alert("Vacancy successfully removed!")
+        let index = this.graduatetypes.indexOf(graduatetype)
+        this.graduatetypes.splice(index, 1)
+        alert("Graduatetype successfully removed!")
         this.$router.push({
-          name: 'ListVacancy'
+          name: 'ListGraduateType'
         })
       })
       .catch(e => {
@@ -88,20 +77,21 @@ export default {
     }
   },
   computed: {
-    vacanciesFilter() {
+    graduatetypesFilter() {
       if (this.filter) {
         let exp = new RegExp(this.filter.trim(), 'i');
-        return this.vacancies.filter(vacancy => exp.test(vacancy.course));
+        return this.graduatetypes.filter(graduatetype => exp.test(graduatetype.name));
       } else {
-        return this.vacancies;
+        return this.graduatetypes;
       }
     }
   },
   created () {
     axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken')
-    axios.get('http://localhost:3000/vacancy')
+    axios.get('http://localhost:3000/graduatetype')
     .then(response => {
-      this.vacancies = response.data
+      this.graduatetypes = response.data
+      console.log(this.graduatetypes)
     })
     .catch(e => {
       this.errors.push(e)

@@ -77,7 +77,7 @@ export default {
   },
   data () {
     return {
-      title: 'Graduate Enrollment',
+      title: 'Create Graduate Enrollment',
       graduateTypes: [],
       campi: [],
       shifts: [],
@@ -161,16 +161,7 @@ export default {
         })
       }
     })
-
-    if(this.id) {
-        axios.get('http://localhost:3000/enrollment/'+this.id)
-          .then(enrollment => {this.enrollment = enrollment.body})
-      }
-
   }
 }
 </script>
 
-<style>
-
-</style>
