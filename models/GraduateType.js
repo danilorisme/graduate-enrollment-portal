@@ -2,7 +2,7 @@ var mongoose = require('mongoose')
 
   var GraduateTypeSchema = new mongoose.Schema({
     name: String
-}, { collection: 'type',
+}, { collection: 'graduatetype',
     versionKey: false
 })
 
