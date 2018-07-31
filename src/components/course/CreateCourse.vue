@@ -8,7 +8,7 @@
             <form @submit="onSubmit">
               <div class="form-group">
                 <label for="inputTextName">Name</label>
-                <input v-model="course.name" type="text" class="form-control" id="inputTextName" placeholder="Course" aria-label="Course">
+                <input v-model="course.name" type="text" class="form-control" id="inputTextName" placeholder="Course" aria-label="Course" required>
               </div>
               <div class="text-right">
                 <form-button label="Create" classStyle="success" type="submit"/>

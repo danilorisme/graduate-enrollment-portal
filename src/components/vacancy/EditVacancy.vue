@@ -8,7 +8,7 @@
             <form @submit="onSubmit">
               <div class="form-group">
                 <label for="inputSelectCampus">Campus</label>
-                <select v-model="vacancy.campus" class="custom-select" id="inputSelectCampus">
+                <select v-model="vacancy.campus" class="custom-select" id="inputSelectCampus" required>
                   <option selected>Campus</option>
                   <option v-for="campus in campi">{{ campus.name }}</option>
                 </select>
@@ -16,7 +16,7 @@
 
               <div class="form-group">
                 <label for="inputSelectShift">Shift</label>
-                <select v-model="vacancy.shift" class="custom-select" id="inputSelectShift">
+                <select v-model="vacancy.shift" class="custom-select" id="inputSelectShift" required>
                   <option selected>Shift</option>
                   <option v-for="shift in shifts">{{ shift.name }}</option>
                 </select>
@@ -24,7 +24,7 @@
 
               <div class="form-group">
                 <label for="inputSelectCourse">Course</label>
-                <select v-model="vacancy.course" class="custom-select" id="inputSelectCourse">
+                <select v-model="vacancy.course" class="custom-select" id="inputSelectCourse" required>
                   <option selected>Course</option>
                   <option v-for="course in courses">{{ course.name }}</option>
                 </select>
@@ -32,7 +32,7 @@
 
               <div class="form-group">
                 <label for="inputTextNumVacancy">Number of Vacancies</label>
-                <input v-model="vacancy.numVacancies" type="text" class="form-control" id="inputTextNumVacancy" placeholder="NumberVacancy" aria-label="NumberVacancy">
+                <input v-model="vacancy.numVacancies" type="text" class="form-control" id="inputTextNumVacancy" placeholder="NumberVacancy" aria-label="NumberVacancy" required>
               </div>
 
               <div class="text-right">

@@ -8,11 +8,11 @@
             <form @submit="onSubmit">
               <div class="form-group">
                 <label for="inputTextName">Name</label>
-                  <input v-model="campus.name" type="text" class="form-control" id="inputTextName" placeholder="Name" aria-label="Name">
+                  <input v-model="campus.name" type="text" class="form-control" id="inputTextName" placeholder="Name" aria-label="Name" required>
                 </div>
               <div class="form-group">
                 <label for="inputTextAdress">Adress</label>
-                <input v-model="campus.adress" type="text" class="form-control" placeholder="Adress" aria-label="Adress">
+                <input v-model="campus.adress" type="text" class="form-control" placeholder="Adress" aria-label="Adress" required>
               </div>
               <div class="text-right">
                 <form-button label="Create" classStyle="success" type="submit"/>

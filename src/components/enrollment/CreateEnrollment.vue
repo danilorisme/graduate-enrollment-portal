@@ -8,7 +8,7 @@
             <form @submit="onSubmit">
               <div class="form-group">
                 <label for="inputSelectType">Graduate Type</label>
-                <select v-model="enrollment.graduateType" class="custom-select" id="inputSelectType">
+                <select v-model="enrollment.graduateType" class="custom-select" id="inputSelectType" required>
                   <option selected>Graduate Type</option>
                   <option v-for="type in graduateTypes">{{ type.name }}</option>
                 </select>
@@ -16,7 +16,7 @@
 
               <div class="form-group">
                 <label for="inputSelectCampus">Campus</label>
-                <select v-model="enrollment.campus" class="custom-select" id="inputSelectCampus">
+                <select v-model="enrollment.campus" class="custom-select" id="inputSelectCampus" required>
                   <option selected>Campus</option>
                   <option v-for="campus in campi">{{ campus.name }}</option>
                 </select>
@@ -24,7 +24,7 @@
 
               <div class="form-group">
                 <label for="inputSelectShift">Shift</label>
-                <select v-model="enrollment.shift" class="custom-select" id="inputSelectShift">
+                <select v-model="enrollment.shift" class="custom-select" id="inputSelectShift" required>
                   <option selected>Shift</option>
                   <option v-for="shift in shifts">{{ shift.name }}</option>
                 </select>
@@ -32,7 +32,7 @@
 
               <div class="form-group">
                 <label for="inputSelectCourse">Course</label>
-                <select v-model="enrollment.course" class="custom-select" id="inputSelectCourse">
+                <select v-model="enrollment.course" class="custom-select" id="inputSelectCourse" required>
                   <option selected>Course</option>
                   <option v-for="course in courses">{{ course.name }}</option>
                 </select>
@@ -40,17 +40,17 @@
 
               <div class="form-group">
                 <label for="inputTextName">Name</label>
-                <input v-model="enrollment.studentName" type="text" class="form-control" id="inputTextName" placeholder="Name" aria-label="Name">
+                <input v-model="enrollment.studentName" type="text" class="form-control" id="inputTextName" placeholder="Name" aria-label="Name" required>
               </div>
 
               <div class="form-group">
                 <label for="inputTextEmail">E-mail</label>
-                <input v-model="enrollment.studentMail" type="text" class="form-control" id="inputTextEmail" placeholder="E-mail" aria-label="E-mail">
+                <input v-model="enrollment.studentMail" type="text" class="form-control" id="inputTextEmail" placeholder="E-mail" aria-label="E-mail" required>
               </div>
 
               <div class="form-group">
                 <label for="inputTextCPF">CPF</label>
-                <input v-model="enrollment.studentCPF" type="text" class="form-control" placeholder="CPF" aria-label="CPF">
+                <input v-model="enrollment.studentCPF" type="text" class="form-control" placeholder="CPF" aria-label="CPF" required>
               </div>
 
               <div class="text-right">
