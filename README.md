@@ -1,6 +1,15 @@
 # Graduate Enrollment Portal
 
-> Portal for new graduate students.Portal with restriction of access only for personnel registered and with control of vacancies by course.
+> Portal for new graduate students. Portal with restriction of access only for personnel registered and with control of vacancies by course.
+
+## Documentation
+
+* **bin** - *Web server configurations*
+* **build** - *Project build*
+* **config** - *Backend configurations*
+* **models** - *Database models*
+* **routes** - *RESTful API*
+* **src** - *Frontend package with Vue.JS*
 
 ## Built With
 
