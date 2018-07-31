@@ -88,7 +88,9 @@ checkVacancy = function(enrollment) {
       }
     }
   }
+
   console.log("validation "+validation)
+
 }
 
 // Get all
@@ -116,34 +118,12 @@ router.get('/:id', function(req, res, next) {
 // Create
 router.post('/', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers)
-  req.body.employeer = req.user.username
-
+  // console.log("check "+checkVacancy(req.body))
   if (token) {
-    Vacancy.find({}).exec(function(err, docs){
-      var vacancies = docs
-      var enrollment = req.body
-      for(var key in Object.keys(vacancies)){
-        if (enrollment.course == vacancies[key].course && enrollment.shift == vacancies[key].shift && enrollment.campus == vacancies[key].campus) {
-          if (vacancies[key].numVacanciesFilled == vacancies[key].numVacancies) {
-            res.json({success: false})
-            return false
-          } else {
-            Enrollment.create(req.body, function (err, doc) {
-              if (err) return next(err)
-              // sendMail(doc)
-              res.json(doc)
-            })
-            return true
-          }
-        } else {
-          Enrollment.create(req.body, function (err, doc) {
-            if (err) return next(err)
-            // sendMail(doc)
-            res.json(doc)
-          })
-          return true
-        }
-      }
+    Enrollment.create(req.body, function (err, doc) {
+      if (err) return next(err)
+      // sendMail(doc)
+      res.json(doc)
     })
   } else {
     return res.status(403).send({success: false, msg: 'Unauthorized.'})

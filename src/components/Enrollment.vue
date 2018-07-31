@@ -93,10 +93,15 @@ export default {
       evt.preventDefault()
       axios.post('http://localhost:3000/enrollment', this.enrollment)
       .then(response => {
-        alert("Enrollment successfully!")
-        this.$router.push({
-          name: 'EnrollmentList'
-        })
+        if (response.data.success==false) {
+          alert("No vacancies for this course!")
+        } 
+        else {
+          alert("Enrollment successfully!")
+          this.$router.push({
+            name: 'EnrollmentList'
+          })
+        }
       })
       .catch(e => {
         console.log(e)

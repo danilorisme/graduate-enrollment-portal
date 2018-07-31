@@ -24,6 +24,7 @@
     "passport-jwt": "^4.0.0",
     "popper.js": "^1.14.3",
     "serve-favicon": "^2.5.0",
+    "sparkpost": "^2.1.2",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
