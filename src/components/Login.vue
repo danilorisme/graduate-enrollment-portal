@@ -1,48 +1,5 @@
 <template>
   <div>
-    <!-- <div class="container mt-4">
-      <div class="row mt-4">
-        <div class="col-lg-12">
-          <form @submit="onSubmit">
-            <div class="form-group">
-              <label for="inputTextUsername">Username</label>
-              <input type="text" id="inputTextUsername" :state="state" v-model.trim="login.username" />
-            </div>
-            <div class="form-group">
-              <label for="inputTextPassword">Password</label>
-              <input type="password" id="inputTextPassword" :state="state" v-model.trim="login.password" />
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-            <button type="button" class="btn btn-secondary" @click.stop="register()">Register</button>
-          </form>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- <div class="container">
-      <div class="row">
-        <div class="Absolute-Center is-Responsive">
-          <div id="logo-container"></div>
-          <div class="col-sm-12 col-md-10 col-md-offset-1">
-            <form id="loginForm" @submit="onSubmit">
-              <div class="form-group input-group">
-                <label for="inputTextUsername">Username</label>
-                <input class="form-control" type="text" id="inputTextUsername" :state="state" v-model.trim="login.username" />          
-              </div>
-              <div class="form-group input-group">
-                <label for="inputTextPassword">Password</label>
-                <input class="form-control" type="password" id="inputTextPassword" :state="state" v-model.trim="login.password" />     
-              </div>
-              <div class="form-group">
-                <button type="button" class="btn btn-def btn-block">Login</button>
-                <button type="button" class="btn btn-secondary btn-def btn-block" @click.stop="register()">Register</button>
-              </div>
-            </form>        
-          </div>  
-        </div>    
-      </div>
-    </div> -->
-
     <div class="back">
       <div class="div-center">
         <div class="content">
@@ -61,8 +18,6 @@
           </form>
         </div>
       </div>
-    
-
   </div>
 </template>
 
