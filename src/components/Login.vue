@@ -8,13 +8,16 @@
           <form @submit="onSubmit">
             <div class="form-group">
               <label for="inputTextUsername">Username</label>
-              <input class="form-control" type="text" id="inputTextUsername" :state="state" v-model.trim="login.username" />
+              <input class="form-control" type="text" id="inputTextUsername" :state="state" v-model.trim="login.username" required />
             </div>
             <div class="form-group">
               <label for="inputTextPassword">Password</label>
-              <input class="form-control" type="password" id="inputTextPassword" :state="state" v-model.trim="login.password" />
+              <input class="form-control" type="password" id="inputTextPassword" :state="state" v-model.trim="login.password" required />
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <form-button label="Login" classStyle="success" type="submit" />
+            <router-link :to="{ name: 'Register'}">
+              <form-button label="Register" classStyle="primary" type="button" />
+            </router-link>
           </form>
         </div>
       </div>
@@ -24,9 +27,13 @@
 <script>
 
 import axios from 'axios'
+import Button from './shared/button/Button.vue'
 
 export default {
   name: 'Login',
+  components: {
+    'form-button': Button
+  },
   data () {
     return {
       login: {},
