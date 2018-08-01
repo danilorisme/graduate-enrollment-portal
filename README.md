@@ -7,6 +7,7 @@
 * **bin** - *Web server configurations*
 * **build** - *Project build*
 * **config** - *Backend configurations*
+* **diagram** - *Entity Relationship Diagram*
 * **models** - *Database models*
 * **routes** - *RESTful API*
 * **src** - *Frontend package with Vue.JS*
